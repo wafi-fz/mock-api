@@ -3,6 +3,7 @@ import DsWrapResponseInterceptor from '@/interceptors/ds-wrap-response.intercept
 import { Controller, Post, Body, UseInterceptors } from '@nestjs/common';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { MonitoringRequestDto } from './dtos/monitoring-request.dto';
+import { MonitoringDatatableRequestDto } from './dtos/monitoring-datatable-request.dto';
 
 @ApiTags('Monitoring')
 @UseInterceptors(DsWrapResponseInterceptor)
@@ -47,6 +48,48 @@ export default class MonitoringController {
       endDate: body.endDate,
       userId: body.userId,
       durationType: body.infinity ? 0 : 1,
+    });
+
+    return response;
+  }
+
+  @Post('datatable')
+  @ApiBody({
+    type: MonitoringDatatableRequestDto,
+    description: 'Monitoring Datatable Request Body',
+    examples: {
+      monitoringDatatableExample: {
+        summary: 'Monitoring Datatable Request Body Example',
+        value: {
+          page: 1,
+          limit: 10,
+          status: 0,
+          userId: '0',
+          title: 'test',
+          platforms: [1, 5],
+          startDate: '2025-09-04',
+          endDate: '2025-09-05',
+        },
+      },
+    },
+  })
+  async datatable(@Body() body: MonitoringDatatableRequestDto): Promise<any> {
+    const response = DsStandardResponse(200, 'ok', {
+      data: [
+        {
+          id: '545f456f-f0e0-40db-b8c8-991dcc22898e',
+          title: 'test',
+          keyword: 'test',
+          categoryType: 1,
+          platforms: [1, 5],
+          status: 0,
+          startDate: '2025-09-04',
+          endDate: '2025-09-05',
+          userId: '0',
+          infinity: false,
+        },
+      ],
+      total: 1,
     });
 
     return response;
