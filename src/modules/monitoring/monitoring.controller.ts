@@ -81,23 +81,22 @@ export default class MonitoringController {
     },
   })
   async datatable(@Body() body: MonitoringDatatableRequestDto): Promise<any> {
-    const response = DsStandardResponse(200, 'ok', {
-      data: [
-        {
-          id: '545f456f-f0e0-40db-b8c8-991dcc22898e',
-          title: 'test',
-          keyword: 'test',
-          categoryType: 1,
-          platforms: [1, 5],
-          status: 0,
-          startDate: '2025-09-04',
-          endDate: '2025-09-05',
-          userId: '0',
-          infinity: false,
-        },
-      ],
-      total: 1,
-    });
+    const data = [
+      {
+        id: '545f456f-f0e0-40db-b8c8-991dcc22898e',
+        title: 'test',
+        keyword: 'test',
+        categoryType: 1,
+        platforms: [1, 5],
+        status: 0,
+        startDate: '2025-09-04',
+        endDate: '2025-09-05',
+        userId: '0',
+        infinity: false,
+      },
+    ];
+
+    const response = DsStandardResponse(200, 'ok', data, data.length);
 
     return response;
   }
@@ -112,18 +111,16 @@ export default class MonitoringController {
   })
   async detail(@Param('id') id: string): Promise<any> {
     const response = DsStandardResponse(200, 'ok', {
-      data: {
-        id: id,
-        title: 'test',
-        keyword: 'test',
-        categoryType: 1,
-        platforms: [1, 5],
-        status: 0,
-        startDate: '2025-09-04',
-        endDate: '2025-09-05',
-        userId: '0',
-        infinity: false,
-      },
+      id: id,
+      title: 'test',
+      keyword: 'test',
+      categoryType: 1,
+      platforms: [1, 5],
+      status: 0,
+      startDate: '2025-09-04',
+      endDate: '2025-09-05',
+      userId: '0',
+      infinity: false,
     });
 
     return response;

@@ -25,6 +25,7 @@ export default class DsWrapResponseInterceptor implements NestInterceptor {
           status: data?.status,
           message: data?.message,
           data: data?.data,
+          total: data?.total,
         };
 
         // Include any additional fields that are not date, status, or metadata
