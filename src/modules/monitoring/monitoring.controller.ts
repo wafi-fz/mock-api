@@ -6,7 +6,7 @@ import { MonitoringRequestDto } from './dtos/monitoring-request.dto';
 
 @ApiTags('Monitoring')
 @UseInterceptors(DsWrapResponseInterceptor)
-@Controller('monitoring')
+@Controller('api/v1/monitoring')
 export default class MonitoringController {
   @Post()
   @ApiBody({
