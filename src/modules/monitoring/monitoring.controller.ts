@@ -1,15 +1,22 @@
 import { DsStandardResponse } from '@/helpers/ds-standard-response';
 import DsWrapResponseInterceptor from '@/interceptors/ds-wrap-response.interceptor';
-import { Controller, Post, Body, UseInterceptors } from '@nestjs/common';
-import { ApiBody, ApiTags } from '@nestjs/swagger';
+import {
+  Controller,
+  Post,
+  Body,
+  UseInterceptors,
+  Param,
+  Get,
+} from '@nestjs/common';
+import { ApiBody, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { MonitoringRequestDto } from './dtos/monitoring-request.dto';
 import { MonitoringDatatableRequestDto } from './dtos/monitoring-datatable-request.dto';
 
 @ApiTags('Monitoring')
 @UseInterceptors(DsWrapResponseInterceptor)
-@Controller('api/v1/monitoring')
+@Controller('api')
 export default class MonitoringController {
-  @Post()
+  @Post('v1/monitoring')
   @ApiBody({
     type: MonitoringRequestDto,
     description: 'Monitoring Request Body',
@@ -53,7 +60,7 @@ export default class MonitoringController {
     return response;
   }
 
-  @Post('datatable')
+  @Post('monitoring/datatable')
   @ApiBody({
     type: MonitoringDatatableRequestDto,
     description: 'Monitoring Datatable Request Body',
@@ -90,6 +97,33 @@ export default class MonitoringController {
         },
       ],
       total: 1,
+    });
+
+    return response;
+  }
+
+  @Get('monitoring/detail/:id')
+  @ApiOperation({ summary: 'Get monitoring detail by ID' })
+  @ApiParam({
+    name: 'id',
+    type: String,
+    required: true,
+    example: '545f456f-f0e0-40db-b8c8-991dcc22898e',
+  })
+  async detail(@Param('id') id: string): Promise<any> {
+    const response = DsStandardResponse(200, 'ok', {
+      data: {
+        id: id,
+        title: 'test',
+        keyword: 'test',
+        categoryType: 1,
+        platforms: [1, 5],
+        status: 0,
+        startDate: '2025-09-04',
+        endDate: '2025-09-05',
+        userId: '0',
+        infinity: false,
+      },
     });
 
     return response;
