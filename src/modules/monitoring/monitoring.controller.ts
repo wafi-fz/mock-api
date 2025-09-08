@@ -14,9 +14,9 @@ import { MonitoringDatatableRequestDto } from './dtos/monitoring-datatable-reque
 
 @ApiTags('Monitoring')
 @UseInterceptors(DsWrapResponseInterceptor)
-@Controller('api')
+@Controller('api/monitoring')
 export default class MonitoringController {
-  @Post('v1/monitoring')
+  @Post()
   @ApiBody({
     type: MonitoringRequestDto,
     description: 'Monitoring Request Body',
@@ -60,7 +60,7 @@ export default class MonitoringController {
     return response;
   }
 
-  @Post('monitoring/datatable')
+  @Post('datatable')
   @ApiBody({
     type: MonitoringDatatableRequestDto,
     description: 'Monitoring Datatable Request Body',
@@ -101,7 +101,7 @@ export default class MonitoringController {
     return response;
   }
 
-  @Get('monitoring/detail/:id')
+  @Get('detail/:id')
   @ApiOperation({ summary: 'Get monitoring detail by ID' })
   @ApiParam({
     name: 'id',
