@@ -84,7 +84,7 @@ export default class MonitoringController {
     const data = [
       {
         id: '545f456f-f0e0-40db-b8c8-991dcc22898e',
-        title: 'test',
+        title: body.title,
         keyword: 'test',
         categoryType: 1,
         platforms: [1, 5],

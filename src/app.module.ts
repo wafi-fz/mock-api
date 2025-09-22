@@ -8,6 +8,7 @@ import UserModule from '@/modules/user/user.module';
 import AuthModule from '@/modules/auth/auth.module';
 import PrismaModule from '@/modules/prisma/prisma.module';
 import { MonitoringModule } from './modules/monitoring/monitoring.module';
+import { MonitoringMediaSocialModule } from './modules/monitoring-media-social/monitoring-media-social.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { MonitoringModule } from './modules/monitoring/monitoring.module';
     AuthModule,
     PrismaModule,
     MonitoringModule,
+    MonitoringMediaSocialModule,
   ],
 })
 export default class AppModule {}
