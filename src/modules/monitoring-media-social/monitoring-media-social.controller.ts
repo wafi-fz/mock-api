@@ -1,11 +1,6 @@
 import { DsStandardResponse } from '@/helpers/ds-standard-response';
 import DsWrapResponseInterceptor from '@/interceptors/ds-wrap-response.interceptor';
-import {
-  Body,
-  Controller,
-  Post,
-  UseInterceptors
-} from '@nestjs/common';
+import { Body, Controller, Post, UseInterceptors } from '@nestjs/common';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { MonitoringDatatableRequestDto } from './dtos/monitoring-datatable-request.dto';
 
@@ -242,6 +237,56 @@ export default class MonitoringMediaSocialController {
         monitoringId: '6006de91-5f02-42ef-b699-3bb26bb4dcef',
         username: 'hmifiai.fkuii',
         fullname: 'HMI Komisariat Lafran Pane UII (FIAI - FK)',
+      },
+    ];
+
+    const response = DsStandardResponse(200, 'ok', data, data.length);
+
+    return response;
+  }
+
+  @Post('datatable/facebook')
+  @ApiBody({
+    type: MonitoringDatatableRequestDto,
+    description: 'Monitoring Datatable Request Body',
+    examples: {
+      monitoringDatatableExample: {
+        summary: 'Monitoring Datatable Request Body Example',
+        value: {
+          monitoringId: '44cd0c8a-dfd6-4845-9723-8f5b92da9260',
+          accountName: '',
+          startDate: '',
+          endDate: '',
+          description: '',
+          page: 1,
+          limit: 10,
+        },
+      },
+    },
+  })
+  async datatableFacebook(
+    @Body() body: MonitoringDatatableRequestDto,
+  ): Promise<any> {
+    const data = [
+      {
+        id: 122218648142251503,
+        publishedDate: '18 Jun 2025 17:39:58',
+        profileUrl: null,
+        url: 'https://www.facebook.com/permalink.php?story_fbid=pfbid02zPkygCBH91qoeXBwr4P6ApZ5NrsiF3vgrK8t3cMaaFkXAsXTmBNT4u8i5j3Q3VEMl&id=61557545091807',
+        name: 'Bagusbumi',
+        text: 'Bajingan2 rakus perampok rakyat',
+        hashtag: '',
+        likesCount: 0,
+        sharesCount: 0,
+        viewsCount: 0,
+        commentCount: 0,
+        followingCount: 0,
+        followerCount: 0,
+        friendCount: 0,
+        imageUrl: null,
+        monitoringId: '2fbdb30c-644a-4342-b2ac-b2e743d992bd',
+        profileId: null,
+        createdDate: '2025-01-18 17:41:29.000',
       },
     ];
 
