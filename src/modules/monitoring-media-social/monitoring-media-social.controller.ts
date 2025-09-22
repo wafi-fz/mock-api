@@ -294,4 +294,100 @@ export default class MonitoringMediaSocialController {
 
     return response;
   }
+
+  @Post('datatable/youtube')
+  @ApiBody({
+    type: MonitoringDatatableRequestDto,
+    description: 'Monitoring Datatable Request Body',
+    examples: {
+      monitoringDatatableExample: {
+        summary: 'Monitoring Datatable Request Body Example',
+        value: {
+          monitoringId: '44cd0c8a-dfd6-4845-9723-8f5b92da9260',
+          accountName: '',
+          startDate: '',
+          endDate: '',
+          description: '',
+          page: 1,
+          limit: 10,
+        },
+      },
+    },
+  })
+  async datatableYoutube(
+    @Body() body: MonitoringDatatableRequestDto,
+  ): Promise<any> {
+    const data = [
+      {
+        kind: null,
+        etag: '_akpso-hSwxpLQsHeYCtmuTQDNw',
+        id: 'TEIkacmLXXI',
+        kindId: 'youtube#video',
+        channelId: 'UCqLsfkQSM0yfyGvONAGWd3Q',
+        playlistId: null,
+        publishedDate: '',
+        title: 'Lodho Ayam Legendaris di Lereng Gunung Kelud #Beritasatu',
+        description:
+          'Gunung Kelud di Kediri, Jawa Timur, bukan hanya destinasi wisata alam yang memukau dengan panorama magisnya. Di sana ada surga bagi pencinta kuliner tradisional. Di kaki gunung ini, berdiri sebuah warung legendaris yang menyajikan lodho ayam khas Kediri—menu olahan ayam kampung yang dimasak dengan bumbu rempah khas dan santan kental.\n\nCita rasa autentik dan suasana pegunungan yang sejuk menjadikan pengalaman bersantap di warung ini, jadi pengalaman tak terlupakan bagi para wisatawan.\n\n#Beritasatu\n#SaatnyaIndonesiaBerbenah\n#WajahBaruBuniverse\n#warunglodho #khaskediri #masakankediri #kulinernusantara\n\nPastikan kamu subscribe dan aktifkan juga tombol lonceng untuk mendapatkan notifikasi video terbaru dari BeritaSatu.\n\n---------------------------------------------------------------------------------------------------------------------------\nKunjungi juga social media channel kami :\n\nOfficial Website: https://www.beritasatu.com\nWhatsapp : https://whatsapp.com/channel/0029Vb2lVmJJJhzSSEkLN30K\nTwitter       : https://twitter.com/Beritasatu\nFacebook : https://www.facebook.com/beritasatu/\nInstagram : https://www.instagram.com/beritasatu/\nTiktok        : https://www.tiktok.com/@beritasatuofficial\n\n__________________________________________________________________________________',
+        imageUrl: 'https://i.ytimg.com/vi/TEIkacmLXXI/mqdefault.jpg',
+        channelName: 'BeritaSatu',
+        liveBroadcastContent: null,
+        publishedTime: '2025-07-21 13:15:03',
+        monitoring_id: null,
+        url: 'https://www.youtube.com/watch?v=TEIkacmLXXI',
+        viewCount: 93,
+        likeCount: 7,
+        favoriteCount: 0,
+        commentCount: 0,
+      },
+    ];
+
+    const response = DsStandardResponse(200, 'ok', data, data.length);
+
+    return response;
+  }
+
+  @Post('datatable/google')
+  @ApiBody({
+    type: MonitoringDatatableRequestDto,
+    description: 'Monitoring Datatable Request Body',
+    examples: {
+      monitoringDatatableExample: {
+        summary: 'Monitoring Datatable Request Body Example',
+        value: {
+          monitoringId: '44cd0c8a-dfd6-4845-9723-8f5b92da9260',
+          accountName: '',
+          startDate: '',
+          endDate: '',
+          description: '',
+          page: 1,
+          limit: 10,
+        },
+      },
+    },
+  })
+  async datatableGoogle(
+    @Body() body: MonitoringDatatableRequestDto,
+  ): Promise<any> {
+    const data = [
+      {
+        id: '2b5b3782-aea8-4594-b905-649e0cee7257',
+        monitoringId: '2cb95b06-6ec5-446d-aa4c-9471e31f32aa',
+        source: 'www.greenpeace.org',
+        link: 'https://www.greenpeace.org/indonesia/siaran-pers-2/63138/melindungi-surga-terakhir-investigasi-greenpeace-ungkap-rencana-besar-industri-nikel-di-raja-ampat/',
+        title:
+          'Melindungi Surga Terakhir: Investigasi Greenpeace Ungkap Rencana Besar Industri Nikel di Raja Ampat',
+        description:
+          'Greenpeace Indonesia meluncurkan sebuah laporan yang mengungkap rencana penambangan nikel di Raja Ampat secara utuh.',
+        date: '2025-06-12 12:52:59.000',
+        status: 0,
+        createdDate: '18 Jun 2025 12:52',
+        updatedDate: '18 Jun 2025 12:52',
+      },
+    ];
+
+    const response = DsStandardResponse(200, 'ok', data, data.length);
+
+    return response;
+  }
 }
