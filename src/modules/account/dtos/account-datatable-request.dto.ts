@@ -6,4 +6,20 @@ export class AccountDatatableRequestDto {
 
   @IsNumber()
   limit: number;
+
+  name: string;
+
+  email: string;
+
+  username: string;
+
+  campaignType: string;
+
+  status: string;
+
+  createdAtStart: string;
+
+  createdAtEnd: string;
+
+  platformId: number;
 }
