@@ -9,6 +9,7 @@ import AuthModule from '@/modules/auth/auth.module';
 import PrismaModule from '@/modules/prisma/prisma.module';
 import { MonitoringModule } from './modules/monitoring/monitoring.module';
 import { MonitoringMediaSocialModule } from './modules/monitoring-media-social/monitoring-media-social.module';
+import { AccountModule } from './modules/account/account.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { MonitoringMediaSocialModule } from './modules/monitoring-media-social/m
     PrismaModule,
     MonitoringModule,
     MonitoringMediaSocialModule,
+    AccountModule,
   ],
 })
 export default class AppModule {}

@@ -8,6 +8,7 @@ import {
   Param,
   Get,
   Patch,
+  Put,
 } from '@nestjs/common';
 import { ApiBody, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { AccountRequestDto } from './dtos/account-request.dto';
@@ -86,9 +87,9 @@ export default class AccountController {
       {
         id: '545f456f-f0e0-40db-b8c8-991dcc22898e',
         platformId: 1,
-        name: 'Nurdiana Septiana',
-        email: '',
-        username: 'nurdiana.septiana12',
+        name: body.name,
+        email: body.email,
+        username: body.username,
         accountPassword: '************',
         emailPassword: '************',
         proxyCity: 'Jakarta',
@@ -102,9 +103,9 @@ export default class AccountController {
       {
         id: '645f456f-f0e0-40db-b8c8-991dcc22898e',
         platformId: 5,
-        name: 'Nurdiana Septiana',
-        email: '',
-        username: 'nurdiana.septiana12',
+        name: body.name,
+        email: body.email,
+        username: body.username,
         accountPassword: '************',
         emailPassword: '************',
         proxyCity: 'Jakarta',
@@ -147,7 +148,7 @@ export default class AccountController {
     return DsStandardResponse(200, 'ok', data);
   }
 
-  @Patch('update/:id')
+  @Put('update/:id')
   @ApiOperation({ summary: 'Update account by ID' })
   @ApiParam({
     name: 'id',
@@ -179,7 +180,23 @@ export default class AccountController {
     },
   })
   async update(@Param('id') id: string, @Body() body: AccountRequestDto) {
-    return DsStandardResponse(200, 'ok');
+    const data = {
+      id: '545f456f-f0e0-40db-b8c8-991dcc22898e',
+      platformId: body.platformId,
+      name: body.name,
+      email: body.email,
+      username: body.username,
+      accountPassword: body.accountPassword,
+      emailPassword: body.emailPassword,
+      proxyCity: body.proxyCity,
+      twoFaCode: body.twoFaCode,
+      cookies: body.cookies,
+      campaignType: body.campaignType,
+      createdAt: new Date().toISOString(),
+      status: 'sehat',
+    };
+
+    return DsStandardResponse(200, 'ok', data);
   }
 
   @Post('delete/:id')
