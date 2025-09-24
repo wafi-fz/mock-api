@@ -52,6 +52,8 @@ export default class AccountController {
       twoFaCode: body.twoFaCode,
       cookies: body.cookies,
       campaignType: body.campaignType,
+      createdAt: new Date().toISOString(),
+      status: 'sehat',
     };
 
     return DsStandardResponse(200, 'ok', data);
@@ -85,6 +87,8 @@ export default class AccountController {
         twoFaCode: 'E35K DACR R6RX PW5X K56E UCPJ 5EE5 GHU3',
         cookies: 'text',
         campaignType: 'Collaboration',
+        createdAt: '2023-05-01T10:00:00Z',
+        status: 'sehat',
       },
 
       {
@@ -99,6 +103,8 @@ export default class AccountController {
         twoFaCode: 'E35K DACR R6RX PW5X K56E UCPJ 5EE5 GHU3',
         cookies: 'text',
         campaignType: 'Collaboration',
+        createdAt: '2023-05-01T10:00:00Z',
+        status: 'terblokir',
       },
     ];
 
@@ -126,6 +132,8 @@ export default class AccountController {
       twoFaCode: 'E35K DACR R6RX PW5X K56E UCPJ 5EE5 GHU3',
       cookies: 'text',
       campaignType: 'Collaboration',
+      createdAt: '2023-05-01T10:00:00Z',
+      status: 'sehat',
     };
 
     return DsStandardResponse(200, 'ok', data);
@@ -156,6 +164,8 @@ export default class AccountController {
           twoFaCode: 'E35K DACR R6RX PW5X K56E UCPJ 5EE5 GHU3',
           cookies: 'text',
           campaignType: 'Collaboration',
+          createdAt: '2023-05-01T10:00:00Z',
+          status: 'sehat',
         },
       },
     },
