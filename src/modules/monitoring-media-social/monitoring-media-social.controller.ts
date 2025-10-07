@@ -4,6 +4,13 @@ import { Body, Controller, Post, UseInterceptors } from '@nestjs/common';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { MonitoringDatatableRequestDto } from './dtos/monitoring-datatable-request.dto';
 import { MonitoringDatatablePublicMetricsRequestDto } from './dtos/monitoring-datatable-public-metrics-request.dto';
+import {
+  facebookPublicMetricsMockData,
+  instagramPublicMetricsMockData,
+  tiktokPublicMetricsMockData,
+  twitterPublicMetricsMockData,
+  youtubePublicMetricsMockData,
+} from './mock-data/public-metrics';
 
 @ApiTags('Monitoring Media Social')
 @UseInterceptors(DsWrapResponseInterceptor)
@@ -392,6 +399,7 @@ export default class MonitoringMediaSocialController {
     return response;
   }
 
+  // twitter
   @Post('datatable/public-metrics')
   @ApiBody({
     type: MonitoringDatatablePublicMetricsRequestDto,
@@ -413,78 +421,123 @@ export default class MonitoringMediaSocialController {
   async datatablePublicMetrics(
     @Body() body: MonitoringDatatablePublicMetricsRequestDto,
   ): Promise<any> {
-    const data = [
-      {
-        followerCount: 34,
-        followingCount: 104,
-        listedCount: 0,
-        tweetCount: 1962,
-        createdDate: '19 Sep 2025 00:31',
+    const data = twitterPublicMetricsMockData;
+
+    const response = DsStandardResponse(200, 'ok', data, data.length);
+
+    return response;
+  }
+
+  // tiktok
+  @Post('datatable/tiktok/public-metrics')
+  @ApiBody({
+    type: MonitoringDatatablePublicMetricsRequestDto,
+    description: 'Monitoring Datatable Request Body',
+    examples: {
+      monitoringDatatableExample: {
+        summary: 'Monitoring Datatable Request Body Example',
+        value: {
+          monitoringId: '135ec466-782d-4be8-a0df-3038ff9ee951',
+          page: 1,
+          limit: 10,
+          status: -1,
+          crawlingType: '',
+          sort: [],
+        },
       },
-      {
-        followerCount: 34,
-        followingCount: 104,
-        listedCount: 0,
-        tweetCount: 1962,
-        createdDate: '18 Sep 2025 09:38',
+    },
+  })
+  async datatableTiktokPublicMetrics(
+    @Body() body: MonitoringDatatablePublicMetricsRequestDto,
+  ): Promise<any> {
+    const data = tiktokPublicMetricsMockData;
+
+    const response = DsStandardResponse(200, 'ok', data, data.length);
+
+    return response;
+  }
+
+  // facebook
+  @Post('datatable/facebook/public-metrics')
+  @ApiBody({
+    type: MonitoringDatatablePublicMetricsRequestDto,
+    description: 'Monitoring Datatable Request Body',
+    examples: {
+      monitoringDatatableExample: {
+        summary: 'Monitoring Datatable Request Body Example',
+        value: {
+          monitoringId: '135ec466-782d-4be8-a0df-3038ff9ee951',
+          page: 1,
+          limit: 10,
+          status: -1,
+          crawlingType: '',
+          sort: [],
+        },
       },
-      {
-        followerCount: 34,
-        followingCount: 104,
-        listedCount: 0,
-        tweetCount: 1962,
-        createdDate: '18 Sep 2025 00:39',
+    },
+  })
+  async datatableFacebookPublicMetrics(
+    @Body() body: MonitoringDatatablePublicMetricsRequestDto,
+  ): Promise<any> {
+    const data = facebookPublicMetricsMockData;
+
+    const response = DsStandardResponse(200, 'ok', data, data.length);
+
+    return response;
+  }
+
+  // instagram
+  @Post('datatable/instagram/public-metrics')
+  @ApiBody({
+    type: MonitoringDatatablePublicMetricsRequestDto,
+    description: 'Monitoring Datatable Request Body',
+    examples: {
+      monitoringDatatableExample: {
+        summary: 'Monitoring Datatable Request Body Example',
+        value: {
+          monitoringId: '135ec466-782d-4be8-a0df-3038ff9ee951',
+          page: 1,
+          limit: 10,
+          status: -1,
+          crawlingType: '',
+          sort: [],
+        },
       },
-      {
-        followerCount: 34,
-        followingCount: 104,
-        listedCount: 0,
-        tweetCount: 1962,
-        createdDate: '17 Sep 2025 09:39',
+    },
+  })
+  async datatableInstagramPublicMetrics(
+    @Body() body: MonitoringDatatablePublicMetricsRequestDto,
+  ): Promise<any> {
+    const data = instagramPublicMetricsMockData;
+
+    const response = DsStandardResponse(200, 'ok', data, data.length);
+
+    return response;
+  }
+
+  // youtube
+  @Post('datatable/youtube/public-metrics')
+  @ApiBody({
+    type: MonitoringDatatablePublicMetricsRequestDto,
+    description: 'Monitoring Datatable Request Body',
+    examples: {
+      monitoringDatatableExample: {
+        summary: 'Monitoring Datatable Request Body Example',
+        value: {
+          monitoringId: '135ec466-782d-4be8-a0df-3038ff9ee951',
+          page: 1,
+          limit: 10,
+          status: -1,
+          crawlingType: '',
+          sort: [],
+        },
       },
-      {
-        followerCount: 34,
-        followingCount: 104,
-        listedCount: 0,
-        tweetCount: 1962,
-        createdDate: '17 Sep 2025 00:39',
-      },
-      {
-        followerCount: 34,
-        followingCount: 104,
-        listedCount: 0,
-        tweetCount: 1962,
-        createdDate: '16 Sep 2025 09:39',
-      },
-      {
-        followerCount: 34,
-        followingCount: 104,
-        listedCount: 0,
-        tweetCount: 1962,
-        createdDate: '16 Sep 2025 00:38',
-      },
-      {
-        followerCount: 34,
-        followingCount: 104,
-        listedCount: 0,
-        tweetCount: 1962,
-        createdDate: '15 Sep 2025 09:39',
-      },
-      {
-        followerCount: 34,
-        followingCount: 104,
-        listedCount: 0,
-        tweetCount: 1962,
-        createdDate: '15 Sep 2025 00:46',
-      },
-      {
-        followerCount: 34,
-        followingCount: 104,
-        listedCount: 0,
-        tweetCount: 1962,
-        createdDate: '14 Sep 2025 09:49',
-      },
-    ];
+    },
+  })
+  async datatableYoutubePublicMetrics(
+    @Body() body: MonitoringDatatablePublicMetricsRequestDto,
+  ): Promise<any> {
+    const data = youtubePublicMetricsMockData;
 
     const response = DsStandardResponse(200, 'ok', data, data.length);
 
