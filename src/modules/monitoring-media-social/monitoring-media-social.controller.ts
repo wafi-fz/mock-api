@@ -3,6 +3,7 @@ import DsWrapResponseInterceptor from '@/interceptors/ds-wrap-response.intercept
 import { Body, Controller, Post, UseInterceptors } from '@nestjs/common';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { MonitoringDatatableRequestDto } from './dtos/monitoring-datatable-request.dto';
+import { MonitoringDatatablePublicMetricsRequestDto } from './dtos/monitoring-datatable-public-metrics-request.dto';
 
 @ApiTags('Monitoring Media Social')
 @UseInterceptors(DsWrapResponseInterceptor)
@@ -273,7 +274,7 @@ export default class MonitoringMediaSocialController {
         publishedDate: '18 Jun 2025 17:39:58',
         profileUrl: null,
         url: 'https://www.facebook.com/permalink.php?story_fbid=pfbid02zPkygCBH91qoeXBwr4P6ApZ5NrsiF3vgrK8t3cMaaFkXAsXTmBNT4u8i5j3Q3VEMl&id=61557545091807',
-        name: 'Bagusbumi',
+        name: body.accountName || 'Indonesian Muslim Student Action Union',
         text: 'Bajingan2 rakus perampok rakyat',
         hashtag: '',
         likesCount: 0,
@@ -330,7 +331,7 @@ export default class MonitoringMediaSocialController {
         description:
           'Gunung Kelud di Kediri, Jawa Timur, bukan hanya destinasi wisata alam yang memukau dengan panorama magisnya. Di sana ada surga bagi pencinta kuliner tradisional. Di kaki gunung ini, berdiri sebuah warung legendaris yang menyajikan lodho ayam khas Kediri—menu olahan ayam kampung yang dimasak dengan bumbu rempah khas dan santan kental.\n\nCita rasa autentik dan suasana pegunungan yang sejuk menjadikan pengalaman bersantap di warung ini, jadi pengalaman tak terlupakan bagi para wisatawan.\n\n#Beritasatu\n#SaatnyaIndonesiaBerbenah\n#WajahBaruBuniverse\n#warunglodho #khaskediri #masakankediri #kulinernusantara\n\nPastikan kamu subscribe dan aktifkan juga tombol lonceng untuk mendapatkan notifikasi video terbaru dari BeritaSatu.\n\n---------------------------------------------------------------------------------------------------------------------------\nKunjungi juga social media channel kami :\n\nOfficial Website: https://www.beritasatu.com\nWhatsapp : https://whatsapp.com/channel/0029Vb2lVmJJJhzSSEkLN30K\nTwitter       : https://twitter.com/Beritasatu\nFacebook : https://www.facebook.com/beritasatu/\nInstagram : https://www.instagram.com/beritasatu/\nTiktok        : https://www.tiktok.com/@beritasatuofficial\n\n__________________________________________________________________________________',
         imageUrl: 'https://i.ytimg.com/vi/TEIkacmLXXI/mqdefault.jpg',
-        channelName: 'BeritaSatu',
+        channelName: body.accountName || 'BeritaSatu',
         liveBroadcastContent: null,
         publishedTime: '2025-07-21 13:15:03',
         monitoring_id: null,
@@ -373,7 +374,7 @@ export default class MonitoringMediaSocialController {
       {
         id: '2b5b3782-aea8-4594-b905-649e0cee7257',
         monitoringId: '2cb95b06-6ec5-446d-aa4c-9471e31f32aa',
-        source: 'www.greenpeace.org',
+        source: body.accountName || 'Google News',
         link: 'https://www.greenpeace.org/indonesia/siaran-pers-2/63138/melindungi-surga-terakhir-investigasi-greenpeace-ungkap-rencana-besar-industri-nikel-di-raja-ampat/',
         title:
           'Melindungi Surga Terakhir: Investigasi Greenpeace Ungkap Rencana Besar Industri Nikel di Raja Ampat',
@@ -383,6 +384,105 @@ export default class MonitoringMediaSocialController {
         status: 0,
         createdDate: '18 Jun 2025 12:52',
         updatedDate: '18 Jun 2025 12:52',
+      },
+    ];
+
+    const response = DsStandardResponse(200, 'ok', data, data.length);
+
+    return response;
+  }
+
+  @Post('datatable/public-metrics')
+  @ApiBody({
+    type: MonitoringDatatablePublicMetricsRequestDto,
+    description: 'Monitoring Datatable Request Body',
+    examples: {
+      monitoringDatatableExample: {
+        summary: 'Monitoring Datatable Request Body Example',
+        value: {
+          monitoringId: '135ec466-782d-4be8-a0df-3038ff9ee951',
+          page: 1,
+          limit: 10,
+          status: -1,
+          crawlingType: '',
+          sort: [],
+        },
+      },
+    },
+  })
+  async datatablePublicMetrics(
+    @Body() body: MonitoringDatatablePublicMetricsRequestDto,
+  ): Promise<any> {
+    const data = [
+      {
+        followerCount: 34,
+        followingCount: 104,
+        listedCount: 0,
+        tweetCount: 1962,
+        createdDate: '19 Sep 2025 00:31',
+      },
+      {
+        followerCount: 34,
+        followingCount: 104,
+        listedCount: 0,
+        tweetCount: 1962,
+        createdDate: '18 Sep 2025 09:38',
+      },
+      {
+        followerCount: 34,
+        followingCount: 104,
+        listedCount: 0,
+        tweetCount: 1962,
+        createdDate: '18 Sep 2025 00:39',
+      },
+      {
+        followerCount: 34,
+        followingCount: 104,
+        listedCount: 0,
+        tweetCount: 1962,
+        createdDate: '17 Sep 2025 09:39',
+      },
+      {
+        followerCount: 34,
+        followingCount: 104,
+        listedCount: 0,
+        tweetCount: 1962,
+        createdDate: '17 Sep 2025 00:39',
+      },
+      {
+        followerCount: 34,
+        followingCount: 104,
+        listedCount: 0,
+        tweetCount: 1962,
+        createdDate: '16 Sep 2025 09:39',
+      },
+      {
+        followerCount: 34,
+        followingCount: 104,
+        listedCount: 0,
+        tweetCount: 1962,
+        createdDate: '16 Sep 2025 00:38',
+      },
+      {
+        followerCount: 34,
+        followingCount: 104,
+        listedCount: 0,
+        tweetCount: 1962,
+        createdDate: '15 Sep 2025 09:39',
+      },
+      {
+        followerCount: 34,
+        followingCount: 104,
+        listedCount: 0,
+        tweetCount: 1962,
+        createdDate: '15 Sep 2025 00:46',
+      },
+      {
+        followerCount: 34,
+        followingCount: 104,
+        listedCount: 0,
+        tweetCount: 1962,
+        createdDate: '14 Sep 2025 09:49',
       },
     ];
 

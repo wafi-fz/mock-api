@@ -9,6 +9,7 @@ import {
   Get,
   Patch,
   Put,
+  Delete,
 } from '@nestjs/common';
 import { ApiBody, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { AccountRequestDto } from './dtos/account-request.dto';
@@ -199,7 +200,7 @@ export default class AccountController {
     return DsStandardResponse(200, 'ok', data);
   }
 
-  @Post('delete/:id')
+  @Delete('delete/:id')
   @ApiOperation({ summary: 'Delete account by ID' })
   @ApiParam({
     name: 'id',
