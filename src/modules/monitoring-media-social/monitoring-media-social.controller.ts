@@ -11,6 +11,8 @@ import {
   twitterPublicMetricsMockData,
   youtubePublicMetricsMockData,
 } from './mock-data/public-metrics';
+import { recordsMockData } from './mock-data/records';
+import { MonitoringDatatableRecordsRequestDto } from './dtos/monitoring-datatable-records.dto';
 
 @ApiTags('Monitoring Media Social')
 @UseInterceptors(DsWrapResponseInterceptor)
@@ -538,6 +540,26 @@ export default class MonitoringMediaSocialController {
     @Body() body: MonitoringDatatablePublicMetricsRequestDto,
   ): Promise<any> {
     const data = youtubePublicMetricsMockData;
+
+    const response = DsStandardResponse(200, 'ok', data, data.length);
+
+    return response;
+  }
+
+  // all by platformId
+  @Post('datatable/records')
+  @ApiBody({
+    type: MonitoringDatatableRecordsRequestDto,
+    description: 'Monitoring Datatable Records Request Body',
+    examples: {
+      monitoringDatatableExample: {
+        summary: 'Monitoring Datatable Records Request Body Example',
+        value: { id: 118, platformId: 4, year: 2025, month: 1 },
+      },
+    },
+  })
+  async datatableRecords(@Body() body: any): Promise<any> {
+    const data = recordsMockData;
 
     const response = DsStandardResponse(200, 'ok', data, data.length);
 
